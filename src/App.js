@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 
+import Timer from "./Timer"
+import Button from "./Button"
+
 function App() {
+  const [time, setTime] = useState(0);
+  const [mode, setMode] = useState(0);
+  const [interv, setInterv] = useState();
+
+  const start = () => {
+    run();
+    setMode(1);
+    setInterv(setInterval(run, 10));
+  };
+
+  const stop = () => {
+    setMode(2);
+    setInterv();
+  }
+
+  const run = () => {
+    setTime(prevTime => prevTime+1);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p> Cubex Yeet </p>
+      <Timer time = {time}/>
+      <Button mode = {mode} start = {start} stop = {stop}/>
     </div>
   );
 }
