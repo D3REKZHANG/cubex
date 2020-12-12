@@ -38,7 +38,7 @@ function App() {
 
     return (
         <div className="App">
-            <p> Cubex Yeet </p>
+            <p> Cubex </p>
             <Timer time = {isActive? time.toFixed(1) : time.toFixed(2)}/>
             <button onClick={isActive? toggle : start}>{isActive ? "Stop" : "Start"}</button>
             <button onClick={reset}>Reset</button>
