@@ -1,36 +1,49 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 
 import Timer from "./Timer"
 import Button from "./Button"
 
 function App() {
-  const [time, setTime] = useState(0);
-  const [mode, setMode] = useState(0);
-  const [interv, setInterv] = useState();
+    const [time, setTime] = useState(0);
+    const [startTime, setStartTime] = useState(new Date().getTime());
+    const [isActive, setIsActive] = useState(false);
 
-  const start = () => {
-    run();
-    setMode(1);
-    setInterv(setInterval(run, 10));
-  };
+    const toggle = () => {
+        setIsActive(!isActive);
+    }
 
-  const stop = () => {
-    setMode(2);
-    setInterv();
-  }
+    const start = () => {
+        setStartTime(new Date().getTime());
+        setIsActive(true);
+    }
 
-  const run = () => {
-    setTime(prevTime => prevTime+1);
-  }
+    const reset = () => {
+        setTime(0);
+        setIsActive(false);
+    }
 
-  return (
-    <div className="App">
-      <p> Cubex Yeet </p>
-      <Timer time = {time}/>
-      <Button mode = {mode} start = {start} stop = {stop}/>
-    </div>
-  );
+    useEffect(() => {
+        let interval = null;
+        if(isActive){
+            interval = setInterval(() => {
+                const now = new Date().getTime();
+                setTime((now-startTime)/1000);
+            }, 10);
+        }else{
+            clearInterval(interval);    
+        }
+        return () => clearInterval(interval);
+    }, [isActive, time]);
+
+    return (
+        <div className="App">
+            <p> Cubex Yeet </p>
+            <Timer time = {isActive? time.toFixed(1) : time.toFixed(2)}/>
+            <button onClick={isActive? toggle : start}>{isActive ? "Stop" : "Start"}</button>
+            <button onClick={reset}>Reset</button>
+        </div>
+    );
 }
 
 export default App;
