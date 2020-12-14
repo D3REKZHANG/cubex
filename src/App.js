@@ -66,7 +66,7 @@ function App() {
                 <p className="option">Sign Out</p>
             </div>
             <div className="main">
-                <h1 className="time">{isActive? time.toFixed(1) : time.toFixed(2)}</h1>
+                <p className="time">{isActive? time.toFixed(1) : time.toFixed(2)}</p>
             </div>
         </div>
     );

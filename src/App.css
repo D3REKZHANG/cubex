@@ -12,40 +12,46 @@
     font-style: normal;
 }
 
+.App {
+    display: flex;
+    height: 100vh;
+
+}
+
 .sidebar {
-    height: 100%;
     width: 15%;
+    min-width: 65px;
 
     background-color: #111;
     
-    position: fixed;
     padding: 10px 0px 0px 0px;
     text-align: center;
 }
 
 .main {
-    margin-left: 15%;
-    height: 100%; 
     width: 85%; 
-    position: fixed;
     background-color: #1F1F1F;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
-
+/*
 .time {
-    font-size: 20px;
+    font-size: 30px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
-
+*/
+/*
 .EntryList{
     margin: 3px 15px 5px 15px;
     padding-top: 5px;
     height: 50%;
     overflow-y: auto;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
 
     border-top: 0.5px solid #FFF;
     border-bottom: 0.5px solid #FFF;
@@ -60,7 +66,7 @@
     font-family: "Cascadia Code Light";
     text-align: center; 
 }
-
+*/
 #title {
     margin-top: 3px; 
     font-size: 10px;
