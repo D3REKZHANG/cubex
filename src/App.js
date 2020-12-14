@@ -1,28 +1,47 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 
-import Timer from "./Timer"
-import Button from "./Button"
+import EntryList from "./EntryList"
+import {ReactComponent as Logo } from './logo.svg';
 
 function App() {
     const [time, setTime] = useState(0);
     const [startTime, setStartTime] = useState(new Date().getTime());
     const [isActive, setIsActive] = useState(false);
+    const [data, setData] = useState([]);
+    
+    useEffect(() => {
+        document.addEventListener('keydown', keyDown);
+        document.addEventListener('keyup', keyUp);
 
-    const toggle = () => {
-        setIsActive(!isActive);
+        return () => {
+            document.removeEventListener('keydown', keyDown);
+            document.removeEventListener('keyup', keyUp);
+        }
+    }, [isActive, time]);
+
+    const keyDown = (event) => {
+        if(event.key === ' '){
+            if(!isActive){
+                setTime(0);
+            }
+        }
     }
 
-    const start = () => {
-        setStartTime(new Date().getTime());
-        setIsActive(true);
+    const keyUp = (event) => {
+        if(event.key === ' '){
+            if(isActive){
+                setData([...data, time]);
+                setIsActive(false);
+            }else{
+                setStartTime(new Date().getTime());
+                setTime(0);
+                setIsActive(true);
+            }
+        }
     }
 
-    const reset = () => {
-        setTime(0);
-        setIsActive(false);
-    }
-
+    // timing 
     useEffect(() => {
         let interval = null;
         if(isActive){
@@ -38,10 +57,17 @@ function App() {
 
     return (
         <div className="App">
-            <p> Cubex </p>
-            <Timer time = {isActive? time.toFixed(1) : time.toFixed(2)}/>
-            <button onClick={isActive? toggle : start}>{isActive ? "Stop" : "Start"}</button>
-            <button onClick={reset}>Reset</button>
+            <div className="sidebar">
+                <img src={"./logo.png"} />
+                <p id="title">C U B E X</p>
+                <EntryList className="EntryList" data = {data}/>
+                <p className="option">Export</p>
+                <p className="option">Settings</p>
+                <p className="option">Sign Out</p>
+            </div>
+            <div className="main">
+                <h1 className="time">{isActive? time.toFixed(1) : time.toFixed(2)}</h1>
+            </div>
         </div>
     );
 }

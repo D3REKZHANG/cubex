@@ -1,0 +1,78 @@
+* {
+    color: white;
+    margin: 0;
+    font-family: 'hp_simplifiedlight';
+} 
+     
+@font-face {
+    font-family: 'hp_simplifiedlight';
+    src: url('fontkit/hp-simplified-light-153-webfont.woff2') format('woff2'),
+         url('fontkit/hp-simplified-light-153-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.sidebar {
+    height: 100%;
+    width: 15%;
+
+    background-color: #111;
+    
+    position: fixed;
+    padding: 10px 0px 0px 0px;
+    text-align: center;
+}
+
+.main {
+    margin-left: 15%;
+    height: 100%; 
+    width: 85%; 
+    position: fixed;
+    background-color: #1F1F1F;
+}
+
+.time {
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.EntryList{
+    margin: 3px 15px 5px 15px;
+    padding-top: 5px;
+    height: 50%;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+
+    border-top: 0.5px solid #FFF;
+    border-bottom: 0.5px solid #FFF;
+}
+
+.EntryList::-webkit-scrollbar { 
+    display: none;
+}
+
+.EntryList p {
+    font-size: 8px;
+    font-family: "Cascadia Code Light";
+    text-align: center; 
+}
+
+#title {
+    margin-top: 3px; 
+    font-size: 10px;
+}
+
+.option {
+    font-size: 8px;
+    margin-top: 2px;
+}
+
+img {
+    width: 50%;
+    height: auto;
+        
+}
