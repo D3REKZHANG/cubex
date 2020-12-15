@@ -4,9 +4,11 @@ function EntryList(props) {
     return (
         <div className="EntryList">
             <p style={{fontSize: "6px", marginBottom: "3px"}}>Session 1</p>
+            <ol>
             {props.data.map((entry)=>{
-                return <p> {entry.toFixed(2)}</p>;
+                return <li> {entry.toFixed(2)}</li>;
             })}
+            </ol>
         </div>
     );
 }

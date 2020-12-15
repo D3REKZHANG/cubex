@@ -31,7 +31,7 @@ function App() {
     const keyUp = (event) => {
         if(event.key === ' '){
             if(isActive){
-                setData([...data, time]);
+                setData([time,...data]);
                 setIsActive(false);
             }else{
                 setStartTime(new Date().getTime());
@@ -61,9 +61,11 @@ function App() {
                 <img src={"./logo.png"} />
                 <p id="title">C U B E X</p>
                 <EntryList className="EntryList" data = {data}/>
-                <p className="option">Export</p>
-                <p className="option">Settings</p>
-                <p className="option">Sign Out</p>
+                <ul className="options">
+                    <li>Export</li>
+                    <li>Settings</li>
+                    <li>Sign Out</li>
+                </ul>
             </div>
             <div className="main">
                 <p className="time">{isActive? time.toFixed(1) : time.toFixed(2)}</p>

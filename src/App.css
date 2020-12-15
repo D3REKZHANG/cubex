@@ -35,16 +35,11 @@
     justify-content:center;
     align-items:center;
 }
-/*
+
 .time {
-    font-size: 30px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    font-size: 40px;
 }
-*/
-/*
+
 .EntryList{
     margin: 3px 15px 5px 15px;
     padding-top: 5px;
@@ -61,24 +56,37 @@
     display: none;
 }
 
-.EntryList p {
+.EntryList ol {
+    padding: 0;
+    margin: 0;
+}
+
+.EntryList li {
+    padding: 0;
+    margin: 0;
     font-size: 8px;
     font-family: "Cascadia Code Light";
     text-align: center; 
 }
-*/
+
 #title {
     margin-top: 3px; 
     font-size: 10px;
 }
 
-.option {
+.options {
+    padding: 0;
+    list-style: None;
     font-size: 8px;
     margin-top: 2px;
+}
+
+.options li {
+    padding: 0;
+    margin: 0;
 }
 
 img {
     width: 50%;
     height: auto;
-        
 }
