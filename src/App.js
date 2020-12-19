@@ -14,6 +14,8 @@ function App() {
     const [isActive, setIsActive] = useState(false);
     const [scram, setScram] = useState(false);
     const [data, setData] = useState([]);
+    const [ao5, setAo5] = useState("NA");
+    const [ao12, setAo12] = useState("NA");
     const [test, setTest] = useState('b');
     
     useEffect(() => {
@@ -46,6 +48,7 @@ function App() {
                 setData([time,...data]);
                 setIsActive(false);
                 setScram(!scram);
+                updateAvg(time);
             }else{
                 setStartTime(new Date().getTime());
                 setTime(0);
@@ -68,6 +71,28 @@ function App() {
         return () => clearInterval(interval);
     }, [isActive, time]);
 
+    const updateAvg = ()=>{
+        if(data.length < 4){
+            setAo5("NA");
+        }else{
+            var sum=time;
+            for(var x=0;x<4;x++){
+                sum += data[x];    
+            }
+            setAo5(sum/5);
+            console.log(data);
+        }
+
+        if(data.length < 11){
+            setAo12("NA");
+            for(var x=4;x<11;x++){
+                sum+=data[x];    
+            }
+        }else{
+            setAo12(sum/12);
+        }        
+    }
+
     return (
         <div className="App">
             <div className="sidebar">
@@ -84,8 +109,8 @@ function App() {
                 <Scramble scram={scram}/>
                 <p className="time">{isActive? time.toFixed(1) : time.toFixed(2)}</p>
                 <div className="averages">
-                    <p>ao5: N/A</p>
-                    <p>ao12: N/A</p>
+                    <p>ao5: {(data.length < 5)? "NA" : parseFloat(ao5).toFixed(2)}</p>
+                    <p>ao12: {(data.length < 12)? "NA" : parseFloat(ao12).toFixed(2)}</p>
                 </div>
             </div>
         </div>
