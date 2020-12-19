@@ -2,6 +2,10 @@
 
 Minimalist cube timer for speedsolving. 
 
-Created with MongoDB Atlas, Express and React (MERN).
+Frontend is done with React.
+
+Backend can be found [here](https://github.com/D3REKZHANG/cubex-backend).
+
+
 
 
