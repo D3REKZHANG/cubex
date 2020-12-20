@@ -1,0 +1,128 @@
+* {
+    color: white;
+    margin: 0;
+    font-family: "hp_simplifiedlight";
+} 
+   
+
+@font-face {
+    font-family: 'hp_simplifiedlight';
+    src: url('hp-simplified-light-153-webfont.woff2') format('woff2'),
+         url('hp-simplified-light-153-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.Main {
+    display: flex;
+    height: 100vh;
+
+}
+
+.sidebar {
+    width: 15%;
+    min-width: 65px;
+
+    background-color: #111;
+    
+    padding: 20px 0px 0px 0px;
+    text-align: center;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main {
+    width: 85%; 
+    background-color: #1F1F1F;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.time {
+    font-size: 6vw;
+    justify-self: center;
+}
+
+.averages {
+    font-size: 3vw;
+    text-align: right;
+    margin-bottom: 30px;
+}
+
+.Scramble {
+    padding-top: 5vh;
+    justify-self: flex-start;
+    font-size: 2.5vw;
+    word-spacing: 10px;
+}
+
+.EntryList{
+    margin: 3px 0px 0px 0px;
+    padding-top: 5px;
+    height: 60%;
+}
+
+.EntryList ol::-webkit-scrollbar { 
+    display: none;
+}
+
+.EntryList ol {
+    padding: 10px 0 0 0;
+    margin: 0;
+    height: 90%;
+
+    overflow-y: auto;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+
+    /*border-top: 0.5px solid #FFF;*/
+    /*border-bottom: 0.5px solid #FFF;*/
+}
+
+.EntryList p {
+    font-size: 1.5vw;
+    margin-bottom: 1.5vh;
+}
+
+.EntryList li {
+    padding: 0;
+    margin: 0;
+    font-size: 1.5vw;
+    font-family: "Cascadia Code Light";
+    text-align: center; 
+}
+
+img {
+    /*padding: 20px 0 20px 0;*/
+    width: 50%;
+    height: auto;
+}
+
+#title {
+    /*margin-top: 3px; */
+    font-size: 2.5vw;
+    width: 80%;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid #FFF;
+}
+
+.options {
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 20px;
+    list-style: None;
+    font-size: 1.5vw;
+
+    justify-self: flex-end;
+}
+
+.options li {
+    padding-top: 10px;
+    margin: 0;
+}
+
