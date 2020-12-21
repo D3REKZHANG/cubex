@@ -1,9 +1,6 @@
 * {
-    color: white;
     margin: 0;
-    font-family: "hp_simplifiedlight";
-} 
-   
+}
 
 @font-face {
     font-family: 'hp_simplifiedlight';
@@ -17,6 +14,8 @@
     display: flex;
     height: 100vh;
 
+    color: white;
+    font-family: "hp_simplifiedlight";
 }
 
 .sidebar {
@@ -65,6 +64,7 @@
     margin: 3px 0px 0px 0px;
     padding-top: 5px;
     height: 60%;
+
 }
 
 .EntryList ol::-webkit-scrollbar { 
@@ -79,9 +79,6 @@
     overflow-y: auto;
     scrollbar-width: none; 
     -ms-overflow-style: none; 
-
-    /*border-top: 0.5px solid #FFF;*/
-    /*border-bottom: 0.5px solid #FFF;*/
 }
 
 .EntryList p {
@@ -91,10 +88,17 @@
 
 .EntryList li {
     padding: 0;
-    margin: 0;
+    margin: 3px;
     font-size: 1.5vw;
     font-family: "Cascadia Code Light";
     text-align: center; 
+}
+
+.EntryList li:hover{
+    border-radius: 5px;
+    -webkit-box-shadow:inset 0px 0px 0px 0.5px grey;
+    -moz-box-shadow:inset 0px 0px 0px 0.5px grey;
+    box-shadow:inset 0px 0px 0px 0.5px grey;
 }
 
 img {
@@ -124,5 +128,9 @@ img {
 .options li {
     padding-top: 10px;
     margin: 0;
+}
+
+.options li:hover{
+    border: 0.5px solid white;
 }
 

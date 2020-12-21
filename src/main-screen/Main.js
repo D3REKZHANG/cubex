@@ -29,7 +29,7 @@ function Main() {
         if(isActive){
             interval = setInterval(() => {
                 const now = new Date().getTime();
-                setTime((now-startTime)/1000);
+                setTime(68+(now-startTime)/1000);
             }, 10);
         }else{
             clearInterval(interval);    
@@ -77,7 +77,6 @@ function Main() {
                 sum += data[x];    
             }
             setAo5(sum/5);
-            console.log(data);
         }
 
         if(data.length < 11){
@@ -90,6 +89,22 @@ function Main() {
         }        
     }
 
+    const tformat = (isActive, time) => {
+        var rounding = isActive? 1 : 2;
+        if(time >= 60) {
+            var m = Math.floor(time/60);
+            var s = time-60*m;
+            if(s < 10) {
+                console.log(`${m}:0${s.toFixed(rounding)}`);
+                return `${m}:0${s.toFixed(rounding)}`;
+            }
+            else {
+                console.log(`${m}:${s.toFixed(rounding)}`);
+                return `${m}:${s.toFixed(rounding)}`; 
+            }
+        }
+        return time.toFixed(rounding);
+    }
     return (
         <div className="Main">
             <div className="sidebar">
@@ -104,7 +119,7 @@ function Main() {
             </div>
             <div className="main">
                 <Scramble scram={scram}/>
-                <p className="time">{isActive? time.toFixed(1) : time.toFixed(2)}</p>
+                <p className="time">{tformat(isActive, time)}</p>
                 <div className="averages">
                     <p>ao5: {(data.length < 5)? "NA" : parseFloat(ao5).toFixed(2)}</p>
                     <p>ao12: {(data.length < 12)? "NA" : parseFloat(ao12).toFixed(2)}</p>
