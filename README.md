@@ -6,7 +6,7 @@ Frontend is done with React.
 
 Backend can be found [here](https://github.com/D3REKZHANG/cubex-backend).
 
-# Frontend Todo
+## Frontend Todo
 - [x] Implement Spacebar control
 - [x] Store times locally
 - [x] Basic Styling
@@ -16,14 +16,14 @@ Backend can be found [here](https://github.com/D3REKZHANG/cubex-backend).
 - [ ] Delete times on hover click
 
 
-# Backend Todo
+## Backend Todo
 - [x] Basic express setup
 - [x] Basic authentication
 - [ ] Userdata store times
 - [ ] Figure out saving data
 - [ ] Real scrambles API
 
-# Bugs
+## Bugs
 - [ ] 10.00 when greater than 1 min  
 
 
