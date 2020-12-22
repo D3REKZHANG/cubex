@@ -4,8 +4,8 @@
 
 @font-face {
     font-family: 'hp_simplifiedlight';
-    src: url('hp-simplified-light-153-webfont.woff2') format('woff2'),
-         url('hp-simplified-light-153-webfont.woff') format('woff');
+    src: url('../hp-simplified-light-153-webfont.woff2') format('woff2'),
+         url('../hp-simplified-light-153-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }

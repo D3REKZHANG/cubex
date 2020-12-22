@@ -108,7 +108,7 @@ function Main() {
     return (
         <div className="Main">
             <div className="sidebar">
-                <img src={"./logo.png"} />
+                <img src={"logo.png"} />
                 <p id="title">C U B E X</p>
                 <EntryList data = {data}/>
                 <ul className="options">
