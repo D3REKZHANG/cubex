@@ -1,5 +1,7 @@
 import React, { useState,useEffect } from 'react';
 
+import min2phase from '../min2phase.js';
+
 function Scramble(props) {
 
     const [ scramble, setScramble ] = useState("yeet");
@@ -29,9 +31,17 @@ function Scramble(props) {
         return scram.join(" ");
     }
 
+    const generateScramble = () => {
+        return min2phase.solve(min2phase.randomCube()); 
+    }
+
     useEffect(()=>{
-        setScramble(generate());
+        setScramble(generateScramble());
     }, [props.scram]);
+
+    useEffect(()=>{
+        min2phase.initFull();
+    }, []);
 
     return (
         <div className="Scramble">
