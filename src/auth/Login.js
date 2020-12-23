@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import './auth.css'
 
 import axios from 'axios';
@@ -23,14 +24,14 @@ function Login(){
     return (
         <div className="Login">
             <h1 className="title"> C U B E X </h1>
-            <img src={"logo.png"} />
+            <img className="authLogo" src={"logo.png"} />
             <div className="Inputs">
                 <h1>Login</h1>
                 <input placeholder="username" onChange={e => setLoginUser(e.target.value)} />
                 <input placeholder="password" onChange={e => setLoginPass(e.target.value)} />
                 <input type="checkbox" id="rmbmebox" /> 
                 <label for="rmbmebox">Remember Me</label><br/>
-                <button onClick={login}>Go!</button>
+                <Link to='/'><button onClick={login}>Go!</button></Link>
             </div>
         </div>
     );

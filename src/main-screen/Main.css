@@ -64,7 +64,6 @@
     margin: 3px 0px 0px 0px;
     padding-top: 5px;
     height: 60%;
-
 }
 
 .EntryList ol::-webkit-scrollbar { 
@@ -75,6 +74,8 @@
     padding: 10px 0 0 0;
     margin: 0;
     height: 90%;
+    
+    background-color: #111;
 
     overflow-y: auto;
     scrollbar-width: none; 
@@ -126,6 +127,7 @@ img {
 }
 
 .options li {
+    background-color: #111;
     padding-top: 10px;
     margin: 0;
 }

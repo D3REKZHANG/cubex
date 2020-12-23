@@ -29,7 +29,7 @@ function Main() {
         if(isActive){
             interval = setInterval(() => {
                 const now = new Date().getTime();
-                setTime(68+(now-startTime)/1000);
+                setTime((now-startTime)/1000);
             }, 10);
         }else{
             clearInterval(interval);    

@@ -2,7 +2,6 @@
     margin: 0;
     color: white;
     font-family: 'hp_simplifiedlight';
-    background-color: #1F1F1F;
 }
 
 @font-face {
@@ -14,6 +13,7 @@
 }
 
 .Login{
+    background-color: #1F1F1F;
     height: 100vh;
     display: flex;
     flex-direction: row;
@@ -27,7 +27,7 @@
     padding-bottom: 3vh;
 }
 
-img {
+.authLogo {
     width: 15%;
     height: auto;
     margin: 4vw;
@@ -40,7 +40,7 @@ img {
 
 .Inputs input{
     display: block;
-    margin: 8px 0;
+    margin: 8px 0 0 0;
     padding: 5px;
 
     background-color: black;
@@ -52,10 +52,11 @@ img {
 
 .Inputs input[type="checkbox"] {
     display: inline;
+    margin-bottom: 10px;
 }
 
 .Inputs label {
-    padding-left: 10px;
+    padding: 0 0 0 10px;
 }
 
 .Inputs button {
@@ -66,5 +67,9 @@ img {
     border-radius: 5px;
 
     font-size: 1vw;
+}
+
+.Inputs button:hover {
+    box-shadow: 0 0 7px white;
 }
 
