@@ -1,5 +1,4 @@
 * {
-    margin: 0;
     color: white;
     font-family: 'hp_simplifiedlight';
 }
@@ -73,3 +72,12 @@
     box-shadow: 0 0 7px white;
 }
 
+.registerLink {
+    text-decoration: none;
+    display: inline-block;
+    margin-top:10px;
+}
+
+.registerLink:hover {
+    text-decoration: underline;
+}

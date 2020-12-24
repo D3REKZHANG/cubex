@@ -23,15 +23,16 @@ function Login(){
 
     return (
         <div className="Login">
-            <h1 className="title"> C U B E X </h1>
+            <h1 className="title">C U B E X</h1>
             <img className="authLogo" src={"logo.png"} />
             <div className="Inputs">
                 <h1>Login</h1>
                 <input placeholder="username" onChange={e => setLoginUser(e.target.value)} />
-                <input placeholder="password" onChange={e => setLoginPass(e.target.value)} />
+                <input type="password" placeholder="password" onChange={e => setLoginPass(e.target.value)} />
                 <input type="checkbox" id="rmbmebox" /> 
                 <label for="rmbmebox">Remember Me</label><br/>
                 <Link to='/'><button onClick={login}>Go!</button></Link>
+                <Link to='/register' className="registerLink">Create an account</Link>
             </div>
         </div>
     );
