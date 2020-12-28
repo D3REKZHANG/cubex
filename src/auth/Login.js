@@ -31,7 +31,7 @@ function Login(){
                 <input type="password" placeholder="password" onChange={e => setLoginPass(e.target.value)} />
                 <input type="checkbox" id="rmbmebox" /> 
                 <label for="rmbmebox">Remember Me</label><br/>
-                <Link to='/'><button onClick={login}>Go!</button></Link>
+                <Link to='/timer'><button onClick={login}>Go!</button></Link>
                 <Link to='/register' className="registerLink">Create an account</Link>
             </div>
         </div>

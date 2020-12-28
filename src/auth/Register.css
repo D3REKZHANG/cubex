@@ -1,7 +1,63 @@
-.Register {
-    text-color: black;    
+* {
+    color: white;
+    font-family: 'hp_simplifiedlight';
 }
 
-button {
-    text-color: black;
+.Register{
+    background-color: #1F1F1F;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.Inputs {
+    width: 12%;
+    min-width: 200px;
+}
+
+.Inputs h1 {
+    font-weight: normal;
+    font-size: 22px;
+}
+
+.Inputs input{
+    width: 100%;
+    margin: 8px 0 0 0;
+    padding: 5px;
+
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+
+    font-size: 18px;
+}
+
+.Inputs input[type="checkbox"] {
+    display: inline;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.Inputs label {
+    padding: 0 0 0 10px;
+}
+
+.Inputs button {
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+    box-sizing: content-box;
+
+    background-color: black;
+    border: None;
+    border-radius: 5px;
+
+    font-size: 18px;
+}
+
+.Inputs button:hover {
+    box-shadow: 0 0 7px white;
+}
+

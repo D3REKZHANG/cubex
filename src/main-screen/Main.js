@@ -8,6 +8,7 @@ import axios from "axios";
 
 function Main() {
      
+    const [currentUser, setCurrentUser] = useState("None");
     const [time, setTime] = useState(0);
     const [startTime, setStartTime] = useState(new Date().getTime());
     const [isActive, setIsActive] = useState(false);
@@ -15,11 +16,16 @@ function Main() {
     const [data, setData] = useState([]);
     const [ao5, setAo5] = useState("NA");
     const [ao12, setAo12] = useState("NA");
-    const [test, setTest] = useState('b');
     
     useEffect(() => {
-        axios.get("/a").then(response => {
-            setTest(response.data);
+        axios({
+            method: "GET",
+            withCredentials: true,
+            url: "/user",
+        }).then((res)=>{
+            console.log(res);
+            setCurrentUser(res.data.username);
+            setData(res.data.timeData);
         });
     }, [])
 
@@ -56,10 +62,19 @@ function Main() {
     const keyUp = (event) => {
         if(event.key === ' '){
             if(isActive){
-                setData([time,...data]);
                 setIsActive(false);
                 setScram(!scram);
                 updateAvg(time);
+                axios({
+                    method: "POST",
+                    data: {
+                        username: currentUser,
+                        timeData: [time,...data]
+                    },
+                    withCredentials: true,
+                    url: "/update"
+                });
+                setData([time,...data]);
             }else{
                 setStartTime(new Date().getTime());
                 setTime(0);
