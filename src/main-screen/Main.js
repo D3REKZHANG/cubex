@@ -69,12 +69,27 @@ function Main() {
                     method: "POST",
                     data: {
                         username: currentUser,
-                        timeData: [time,...data]
+                        timeData: [
+                            {
+                                "time": time,
+                                "scramble": scram,
+                                "session": "1",
+                                "id": data.length+1
+                            },
+                            ...data
+                        ]
                     },
                     withCredentials: true,
                     url: "/update"
                 });
-                setData([time,...data]);
+                setData([
+                    {
+                        "time": time,
+                        "scramble": scram,
+                        "session": "1",
+                        "id": data.length+1
+                    },
+                    ...data]);
             }else{
                 setStartTime(new Date().getTime());
                 setTime(0);
@@ -104,6 +119,10 @@ function Main() {
         }        
     }
 
+    const deleteTime = (id) => {
+        console.log("aasdf?");
+    }
+
     const tformat = (isActive, time) => {
         var rounding = isActive? 1 : 2;
         if(time >= 60) {
@@ -120,17 +139,21 @@ function Main() {
         }
         return time.toFixed(rounding);
     }
+
+    const signout = () =>{
+        console.log("asdf");
+    };
+
     return (
         <div className="Main">
             <div className="sidebar">
                 <img src={"logo.png"} />
                 <p id="title">C U B E X</p>
-                <EntryList data = {data}/>
-                <ul className="options">
-                    <li>Export</li>
-                    <li>Settings</li>
-                    <li>Sign Out</li>
-                </ul>
+                <EntryList data = {data} deleteTime={deleteTime}/>
+                <div className="options">
+                    <button>Settings</button>
+                    <button onClick={signout}>Sign Out</button>
+                </div>
             </div>
             <div className="main">
                 <Scramble scram={scram}/>
