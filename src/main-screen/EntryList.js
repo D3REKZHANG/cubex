@@ -6,8 +6,8 @@ function EntryList(props) {
         <div className="EntryList">
             <p> Session 1</p>
             <ol>
-            {props.data.map((entry)=>{
-                return <li /*onClick={props.deleteTime(entry["id"])}*/> {entry["time"].toFixed(2)}</li>;
+            {props.data.map((entry, index)=>{
+                return <li key={index} onClick={()=>props.deleteTime(index)}> {entry["time"].toFixed(2)}</li>;
             })}
             </ol>
         </div>

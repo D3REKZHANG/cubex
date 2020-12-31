@@ -73,8 +73,7 @@ function Main() {
                             {
                                 "time": time,
                                 "scramble": scram,
-                                "session": "1",
-                                "id": data.length+1
+                                "session": "1"
                             },
                             ...data
                         ]
@@ -119,8 +118,8 @@ function Main() {
         }        
     }
 
-    const deleteTime = (id) => {
-        console.log("aasdf?");
+    const deleteTime = (index) => {
+        setData(data.slice(0, index).concat(data.slice(index+1)));
     }
 
     const tformat = (isActive, time) => {
