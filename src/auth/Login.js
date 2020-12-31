@@ -22,7 +22,10 @@ function Login(){
             },
             withCredentials: true,
             url: "http://localhost:5000/login"
-        }).then((res) => history.push("/timer")).catch(err => {
+        }).then((res) => {
+            console.log(res.data);
+            history.push("/timer");
+        }).catch(err => {
             if(err.response.status === 409){
                 setLoginPass("");
                 setErrorText("Username or password is incorrect");
@@ -33,13 +36,13 @@ function Login(){
     return (
         <div className="Login">
             <h1 className="title">C U B E X</h1>
-            <img className="authLogo" src={"logo.png"} />
+            <img className="authLogo" src={"logo.png"} alt="logo"/>
             <form className="Inputs" onSubmit={login}>
                 <h1>Login</h1>
                 <input placeholder="username" value={loginUser} onChange={e => setLoginUser(e.target.value)} />
                 <input type="password" placeholder="password" value={loginPass} onChange={e => setLoginPass(e.target.value)} />
                 <input type="checkbox" id="rmbmebox" /> 
-                <label for="rmbmebox">Remember Me</label><br/>
+                <label htmlFor="rmbmebox">Remember Me</label><br/>
                 <button type="submit">Go!</button>
                 <Link to='/register' className="registerLink">Create an account</Link>
                 <p>{errorText}</p>

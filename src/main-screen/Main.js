@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useHistory } from 'react-router-dom';
 import './Main.css';
 
 import EntryList from "./EntryList"
@@ -16,6 +17,8 @@ function Main() {
     const [data, setData] = useState([]);
     const [ao5, setAo5] = useState("NA");
     const [ao12, setAo12] = useState("NA");
+
+    const history = useHistory();
     
     useEffect(() => {
         axios({
@@ -23,9 +26,9 @@ function Main() {
             withCredentials: true,
             url: "/user",
         }).then((res)=>{
-            console.log(res);
             setCurrentUser(res.data.username);
             setData(res.data.timeData);
+            console.log(res.data);
         });
     }, [])
 
@@ -140,13 +143,20 @@ function Main() {
     }
 
     const signout = () =>{
-        console.log("asdf");
+        axios({
+            method: "GET",
+            url: "/logout"
+        }).then(res => {
+            console.log(res.data);
+        });
+        
+        history.push("/login"); 
     };
 
     return (
         <div className="Main">
             <div className="sidebar">
-                <img src={"logo.png"} />
+                <img src={"logo.png"} alt="logo"/>
                 <p id="title">C U B E X</p>
                 <EntryList data = {data} deleteTime={deleteTime}/>
                 <div className="options">

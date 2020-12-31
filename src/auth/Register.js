@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import './register.css';
 
@@ -16,7 +16,7 @@ function Register(){
 
     const register = (e) => {
         e.preventDefault();
-        if(registerPass != confirmPass){
+        if(registerPass !== confirmPass){
             setErrorText("passwords do not match");
             setRegisterPass("");
             setConfirmPass("");
@@ -30,7 +30,7 @@ function Register(){
                 },
                 withCredentials: true,
                 url: "http://localhost:5000/register"
-            }).then((res) => history.push("/timer")).catch(err => {
+            }).then((res) => history.push("/login")).catch(err => {
                 if (err.response.status === 409) {
                     setRegisterUser("");
                     setRegisterPass("");
