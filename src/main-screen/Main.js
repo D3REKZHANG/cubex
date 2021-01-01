@@ -27,10 +27,17 @@ function Main() {
             url: "/user",
         }).then((res)=>{
             setCurrentUser(res.data.username);
-            setData(res.data.timeData);
+            setData(res.data.timeData)
             console.log(res.data);
         });
     }, [])
+
+    useEffect(() => {
+        console.log("data effect");
+        if(data.length > 0){
+            updateAvg();
+        }
+    }, [data]);
 
     useEffect(() => {
         // timing 
@@ -67,7 +74,6 @@ function Main() {
             if(isActive){
                 setIsActive(false);
                 setScram(!scram);
-                updateAvg(time);
                 axios({
                     method: "POST",
                     data: {
@@ -104,17 +110,16 @@ function Main() {
         if(data.length < 4){
             setAo5("NA");
         }else{
-            var sum=time;
-            for(var x=0;x<4;x++){
-                sum += data[x];    
+            var sum=0;
+            for(var x=0;x<5;x++){
+                sum += data[x]["time"];    
             }
             setAo5(sum/5);
         }
-
-        if(data.length < 11){
+        if(data.length < 12){
             setAo12("NA");
-            for(var x=4;x<11;x++){
-                sum+=data[x];    
+            for(var x=5;x<12;x++){
+                sum+=data[x]["time"];    
             }
         }else{
             setAo12(sum/12);
