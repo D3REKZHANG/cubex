@@ -3,6 +3,8 @@ import Modal from 'react-modal';
 import { useHistory } from 'react-router-dom';
 import './Main.css';
 
+import min2phase from '../min2phase.js';
+
 import EntryList from "./EntryList"
 import Scramble from "./Scramble"
 
@@ -14,7 +16,7 @@ function Main() {
     const [time, setTime] = useState(0);
     const [startTime, setStartTime] = useState(new Date().getTime());
     const [isActive, setIsActive] = useState(false);
-    const [scram, setScram] = useState(false);
+    const [scram, setScram] = useState("NA");
     const [session, setSession] = useState("NA");
     const [data, setData] = useState([]);
     const [ao5, setAo5] = useState("NA");
@@ -35,6 +37,9 @@ function Main() {
             setData(res.data.timeData)
             console.log(res.data);
         });
+        
+        min2phase.initFull();
+        setScram(min2phase.solve(min2phase.randomCube()));
     }, [])
 
     // Update Average on data change
@@ -98,6 +103,7 @@ function Main() {
                         "id": data.length+1
                     },
                     ...data]);
+                setScram(min2phase.solve(min2phase.randomCube()));
             }else{
                 setStartTime(new Date().getTime());
                 setTime(0);
@@ -176,7 +182,7 @@ function Main() {
                 </div>
             </div>
             <div className="main">
-                <Scramble scram={scram}/>
+                <p className="Scramble"> {scram}</p>
                 <p className="time">{tformat(isActive, time)}</p>
                 <div className="averages">
                     <p>ao5: {(data.length < 5)? "NA" : tformat(false, parseFloat(ao5))}</p>
