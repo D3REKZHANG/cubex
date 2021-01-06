@@ -88,7 +88,7 @@
 }
 
 .EntryList li {
-    padding: 0;
+    padding: 0 10px 0 10px;
     margin: 3px;
     font-size: 1.5vw;
     font-family: "Cascadia Code Light";
@@ -117,21 +117,46 @@ img {
 }
 
 .options {
-    display: flex;
     flex-direction: row;
     margin-bottom: 20px;
     justify-self: flex-end;
-    justify-content: space-between;
 }
 
 .options button{
+    font-size: 1vw;
     background-color: #111;
     border: none;
     box-sizing: content-box;
     outline: none;
-    margin: 0;
+    margin: 10px;
 }
 
 .options button:hover{
     box-shadow: 0 0 7px white;
+}
+
+.Modal {
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    top: 35%;
+    left: 35%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+}
+
+.Modal button {
+    background-color: black;
+    border: none;
+    box-sizing: content-box;
+    outline: none;
+    float: right;
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }

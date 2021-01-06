@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
+import Modal from 'react-modal';
 import { useHistory } from 'react-router-dom';
 import './Main.css';
 
@@ -14,9 +15,13 @@ function Main() {
     const [startTime, setStartTime] = useState(new Date().getTime());
     const [isActive, setIsActive] = useState(false);
     const [scram, setScram] = useState(false);
+    const [session, setSession] = useState("NA");
     const [data, setData] = useState([]);
     const [ao5, setAo5] = useState("NA");
     const [ao12, setAo12] = useState("NA");
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedTime, setSelectedTime] = useState(-1);
 
     const history = useHistory();
     
@@ -32,37 +37,32 @@ function Main() {
         });
     }, [])
 
+    // Update Average on data change
     useEffect(() => {
-        console.log("data effect");
         if(data.length > 0){
-            updateAvg();
+            if(data.length < 4){
+                setAo5("NA");
+            }else{
+                var sum=0;
+                for(var x=0;x<5;x++){
+                    sum += data[x]["time"];    
+                }
+                setAo5(sum/5);
+            }
+            if(data.length < 12){
+                setAo12("NA");
+                for(x=5;x<12;x++){
+                    sum+=data[x]["time"];    
+                }
+            }else{
+                setAo12(sum/12);
+            }        
         }
     }, [data]);
 
-    useEffect(() => {
-        // timing 
-        let interval = null;
-        if(isActive){
-            interval = setInterval(() => {
-                const now = new Date().getTime();
-                setTime((now-startTime)/1000);
-            }, 10);
-        }else{
-            clearInterval(interval);    
-        }
-
-        document.addEventListener('keydown', keyDown);
-        document.addEventListener('keyup', keyUp);
-
-        return () => {
-            document.removeEventListener('keydown', keyDown);
-            document.removeEventListener('keyup', keyUp);
-            clearInterval(interval);
-        }
-    }, [isActive, time]);
-
     const keyDown = (event) => {
         if(event.key === ' '){
+            event.preventDefault();
             if(!isActive){
                 setTime(0);
             }
@@ -106,25 +106,27 @@ function Main() {
         }
     }
 
-    const updateAvg = ()=>{
-        if(data.length < 4){
-            setAo5("NA");
+    useEffect(() => {
+        // timing 
+        let interval = null;
+        if(isActive){
+            interval = setInterval(() => {
+                const now = new Date().getTime();
+                setTime((now-startTime)/1000);
+            }, 10);
         }else{
-            var sum=0;
-            for(var x=0;x<5;x++){
-                sum += data[x]["time"];    
-            }
-            setAo5(sum/5);
+            clearInterval(interval);    
         }
-        if(data.length < 12){
-            setAo12("NA");
-            for(var x=5;x<12;x++){
-                sum+=data[x]["time"];    
-            }
-        }else{
-            setAo12(sum/12);
-        }        
-    }
+
+        document.addEventListener('keydown', keyDown);
+        document.addEventListener('keyup', keyUp);
+
+        return () => {
+            document.removeEventListener('keydown', keyDown);
+            document.removeEventListener('keyup', keyUp);
+            clearInterval(interval);
+        }
+    }, [isActive, time, keyUp, keyDown]);
 
     const deleteTime = (index) => {
         setData(data.slice(0, index).concat(data.slice(index+1)));
@@ -158,12 +160,16 @@ function Main() {
         history.push("/login"); 
     };
 
+    const focusTime = (index) => {
+        setSelectedTime(index) 
+    }
+
     return (
         <div className="Main">
             <div className="sidebar">
                 <img src={"logo.png"} alt="logo"/>
                 <p id="title">C U B E X</p>
-                <EntryList data = {data} deleteTime={deleteTime}/>
+                <EntryList data = {data} setSelectedTime={setSelectedTime} setModal={setModalOpen} tformat={tformat}/>
                 <div className="options">
                     <button>Settings</button>
                     <button onClick={signout}>Sign Out</button>
@@ -173,10 +179,18 @@ function Main() {
                 <Scramble scram={scram}/>
                 <p className="time">{tformat(isActive, time)}</p>
                 <div className="averages">
-                    <p>ao5: {(data.length < 5)? "NA" : parseFloat(ao5).toFixed(2)}</p>
-                    <p>ao12: {(data.length < 12)? "NA" : parseFloat(ao12).toFixed(2)}</p>
+                    <p>ao5: {(data.length < 5)? "NA" : tformat(false, parseFloat(ao5))}</p>
+                    <p>ao12: {(data.length < 12)? "NA" : tformat(false, parseFloat(ao12))}</p>
                 </div>
             </div>
+            <Modal 
+                isOpen={modalOpen} ariaHideApp={false}
+                className="Modal" overlayClassName="Overlay" 
+            >
+                <h1> {(selectedTime != -1)?data[selectedTime]["time"]:"yert"} </h1>
+                <p> {(selectedTime != -1)?data[selectedTime]["scramble"]:"yert"} </p>
+                <button onClick={()=>{setModalOpen(false);setSelectedTime(-1)}}>Close</button>
+            </Modal>
         </div>
     );
 }

@@ -6,8 +6,11 @@ function EntryList(props) {
         <div className="EntryList">
             <p> Session 1</p>
             <ol>
-            {props.data.map((entry, index)=>{
-                return <li key={index} onClick={()=>props.deleteTime(index)}> {entry["time"].toFixed(2)}</li>;
+                {props.data.map((entry, index)=>{
+                    return <li key={index} onClick={()=>{
+                        props.setSelectedTime(index);
+                        props.setModal(true);
+                    }}> {props.tformat(false, entry["time"])}</li>;
             })}
             </ol>
         </div>
