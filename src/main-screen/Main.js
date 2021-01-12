@@ -197,13 +197,13 @@ function Main() {
             >
                 <div style={{display: 'flex', width:'100%',flexDirection: 'row', justifyContent:'space-between'}}>
                     <h1 style={{display: 'block'}}> {(selectedTime != -1)?`#${data.length-selectedTime}`:"yert"}</h1>
-                    <button onClick={()=>{setModalOpen(false);setSelectedTime(-1)}}>Close</button>
+                    <button style={{fontSize: '1vw'}}onClick={()=>{setModalOpen(false);setSelectedTime(-1)}}>&#10006;</button>
                 </div>
                 <h1 style={{alignSelf: 'center', fontSize:'2vw', margin: '30px 0 15px 0'}}> {(selectedTime != -1)?tformat(false, data[selectedTime]["time"]):"yert"} </h1>
 
                 <p style={{alignSelf: 'center', fontSize:'1vw'}}> {(selectedTime != -1)?data[selectedTime]["scramble"]:"yert"} </p>
 
-                <button onClick={()=>deleteTime(selectedTime)}>Delete</button>
+                <button style={{color: '#ff9191'}} onClick={()=>{deleteTime(selectedTime);setModalOpen(false)}}>Delete</button>
             </Modal>
         </div>
     );
