@@ -143,6 +143,11 @@ img {
     left: 35%;
     background-color: rgba(0, 0, 0, 0.9);
     color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
 }
 
 .Modal button {
@@ -159,4 +164,6 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
+    backdrop-filter: blur(5px);
 }
+

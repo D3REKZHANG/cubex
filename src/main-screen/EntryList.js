@@ -8,8 +8,9 @@ function EntryList(props) {
             <ol>
                 {props.data.map((entry, index)=>{
                     return <li key={index} onClick={()=>{
-                        props.setSelectedTime(index);
                         props.setModal(true);
+                        props.setSelectedTime(index);
+                        console.log(index);
                     }}> {props.tformat(false, entry["time"])}</li>;
             })}
             </ol>

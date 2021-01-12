@@ -189,13 +189,21 @@ function Main() {
                     <p>ao12: {(data.length < 12)? "NA" : tformat(false, parseFloat(ao12))}</p>
                 </div>
             </div>
+            <div id="root"></div>
             <Modal 
                 isOpen={modalOpen} ariaHideApp={false}
                 className="Modal" overlayClassName="Overlay" 
+                onRequestClose={()=>{setModalOpen(false)}}
             >
-                <h1> {(selectedTime != -1)?data[selectedTime]["time"]:"yert"} </h1>
-                <p> {(selectedTime != -1)?data[selectedTime]["scramble"]:"yert"} </p>
-                <button onClick={()=>{setModalOpen(false);setSelectedTime(-1)}}>Close</button>
+                <div style={{display: 'flex', width:'100%',flexDirection: 'row', justifyContent:'space-between'}}>
+                    <h1 style={{display: 'block'}}> {(selectedTime != -1)?`#${data.length-selectedTime}`:"yert"}</h1>
+                    <button onClick={()=>{setModalOpen(false);setSelectedTime(-1)}}>Close</button>
+                </div>
+                <h1 style={{alignSelf: 'center', fontSize:'2vw', margin: '30px 0 15px 0'}}> {(selectedTime != -1)?tformat(false, data[selectedTime]["time"]):"yert"} </h1>
+
+                <p style={{alignSelf: 'center', fontSize:'1vw'}}> {(selectedTime != -1)?data[selectedTime]["scramble"]:"yert"} </p>
+
+                <button onClick={()=>deleteTime(selectedTime)}>Delete</button>
             </Modal>
         </div>
     );
