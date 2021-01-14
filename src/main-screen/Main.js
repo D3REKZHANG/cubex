@@ -45,6 +45,7 @@ function Main() {
     // Update Average on data change
     useEffect(() => {
         if(data.length > 0){
+            console.log(data.length);
             if(data.length < 4){
                 setAo5("NA");
             }else{
@@ -56,10 +57,10 @@ function Main() {
             }
             if(data.length < 12){
                 setAo12("NA");
+            }else{
                 for(x=5;x<12;x++){
                     sum+=data[x]["time"];    
                 }
-            }else{
                 setAo12(sum/12);
             }        
         }
