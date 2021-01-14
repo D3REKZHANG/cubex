@@ -14,7 +14,8 @@ Backend can be found [here](https://github.com/D3REKZHANG/cubex-backend).
 - [x] Add scrambles
 - [x] Login and Register page html/css
 - [x] Delete times on hover click
-- [ ] Improve hover time UI
+- [x] Improve hover time UI
+- [ ] Change sessions
 - [ ] Fix bottom of sidebar options (settings, logout)
 - [ ] Add widgets (show scramble, graph)
 - [ ] Redesign top of sidebar 
