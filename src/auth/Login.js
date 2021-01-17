@@ -21,7 +21,7 @@ function Login(){
                 password: loginPass
             },
             withCredentials: true,
-            url: "/login"
+            url: "https://cubex-backend.herokuapp.com/login"
         }).then((res) => {
             console.log(res.data);
             history.push("/timer");

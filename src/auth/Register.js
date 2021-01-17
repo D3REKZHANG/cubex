@@ -29,7 +29,7 @@ function Register(){
                     password: registerPass
                 },
                 withCredentials: true,
-                url: "/register"
+                url: "https://cubex-backend.herokuapp.com/register"
             }).then((res) => history.push("/login")).catch(err => {
                 if (err.response.status === 409) {
                     setRegisterUser("");

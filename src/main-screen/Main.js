@@ -31,7 +31,7 @@ function Main() {
         axios({
             method: "GET",
             withCredentials: true,
-            url: "/user",
+            url: "https://cubex-backend.herokuapp.com/user",
         }).then((res)=>{
             setCurrentUser(res.data.username);
             setData(res.data.timeData)
@@ -94,7 +94,7 @@ function Main() {
                         ]
                     },
                     withCredentials: true,
-                    url: "/update"
+                    url: "https://cubex-backend.herokuapp.com/update"
                 });
                 setData([
                     {
@@ -159,7 +159,7 @@ function Main() {
     const signout = () =>{
         axios({
             method: "GET",
-            url: "/logout"
+            url: "https://cubex-backend.herokuapp.com/logout"
         }).then(res => {
             console.log(res.data);
         });
