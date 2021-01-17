@@ -21,7 +21,7 @@ function Login(){
                 password: loginPass
             },
             withCredentials: true,
-            url: "http://localhost:5000/login"
+            url: "/login"
         }).then((res) => {
             console.log(res.data);
             history.push("/timer");
