@@ -29,7 +29,7 @@ function Register(){
                     password: registerPass
                 },
                 withCredentials: true,
-                url: "http://localhost:5000/register"
+                url: "/register"
             }).then((res) => history.push("/login")).catch(err => {
                 if (err.response.status === 409) {
                     setRegisterUser("");
