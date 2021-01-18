@@ -30,7 +30,7 @@ function Main() {
     useEffect(() => {
         axios({
             method: "GET",
-            withCredentials: true,
+            //withCredentials: true,
             url: "https://cubex-backend.herokuapp.com/user",
         }).then((res)=>{
             setCurrentUser(res.data.username);
@@ -93,7 +93,7 @@ function Main() {
                             ...data
                         ]
                     },
-                    withCredentials: true,
+                    //withCredentials: true,
                     url: "https://cubex-backend.herokuapp.com/update"
                 });
                 setData([
