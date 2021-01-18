@@ -30,12 +30,13 @@ function Main() {
     useEffect(() => {
         axios({
             method: "GET",
-            //withCredentials: true,
+            withCredentials: true,
             url: "https://cubex-backend.herokuapp.com/user",
         }).then((res)=>{
             setCurrentUser(res.data.username);
             setData(res.data.timeData)
-            console.log(res.data);
+            console.log(res);
+            console.log("asdf");
         });
         
         min2phase.initFull();
@@ -44,7 +45,7 @@ function Main() {
 
     // Update Average on data change
     useEffect(() => {
-        if(data.length > 0){
+        if(data != undefined){
             console.log(data.length);
             if(data.length < 4){
                 setAo5("NA");
@@ -93,7 +94,7 @@ function Main() {
                             ...data
                         ]
                     },
-                    //withCredentials: true,
+                    withCredentials: true,
                     url: "https://cubex-backend.herokuapp.com/update"
                 });
                 setData([

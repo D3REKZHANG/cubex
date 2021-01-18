@@ -20,7 +20,7 @@ function Login(){
                 username: loginUser,
                 password: loginPass
             },
-            //withCredentials: true,
+            withCredentials: true,
             url: "https://cubex-backend.herokuapp.com/login"
         }).then((res) => {
             console.log(res.data);
