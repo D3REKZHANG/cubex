@@ -6,13 +6,14 @@ function EntryList(props) {
         <div className="EntryList">
             <p> Session 1</p>
             <ol>
-                {props.data.map((entry, index)=>{
-                    return <li key={index} onClick={()=>{
-                        props.setModal(true);
-                        props.setSelectedTime(index);
-                        console.log(index);
-                    }}> {props.tformat(false, entry["time"])}</li>;
-            })}
+                {(props.data != undefined)?
+                        (props.data.map((entry, index)=>{
+                            return <li key={index} onClick={()=>{
+                                props.setModal(true);
+                                props.setSelectedTime(index);
+                                console.log(index);
+                            }}> {props.tformat(false, entry["time"])}</li>;
+                        })):""}
             </ol>
         </div>
     );
