@@ -95,7 +95,7 @@ function Main() {
                         ]
                     },
                     withCredentials: true,
-                    url: "https://cubex-backend.herokuapp.com/update"
+                    url:"https://cubex-backend.herokuapp.com/update"
                 });
                 setData([
                     {
@@ -160,7 +160,7 @@ function Main() {
     const signout = () =>{
         axios({
             method: "GET",
-            url: "https://cubex-backend.herokuapp.com/logout"
+            url:"https://cubex-backend.herokuapp.com/logout"
         }).then(res => {
             console.log(res.data);
         });
