@@ -186,8 +186,8 @@ function Main() {
                 <p className="Scramble"> {scram}</p>
                 <p className="time">{tformat(isActive, time)}</p>
                 <div className="averages">
-                    <p>ao5: {(data.length < 5)? "NA" : tformat(false, parseFloat(ao5))}</p>
-                    <p>ao12: {(data.length < 12)? "NA" : tformat(false, parseFloat(ao12))}</p>
+                    <p>ao5: {(data != undefined && data.length < 5)? "NA" : tformat(false, parseFloat(ao5))}</p>
+                    <p>ao12: {(data != undefined && data.length < 12)? "NA" : tformat(false, parseFloat(ao12))}</p>
                 </div>
             </div>
             <div id="root"></div>
