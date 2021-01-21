@@ -10,8 +10,8 @@ import Scramble from "./Scramble"
 
 import axios from "axios";
 
-function Main() {
-     
+function Main(props) {
+
     const [currentUser, setCurrentUser] = useState("None");
     const [time, setTime] = useState(0);
     const [startTime, setStartTime] = useState(new Date().getTime());
@@ -26,18 +26,22 @@ function Main() {
     const [selectedTime, setSelectedTime] = useState(-1);
 
     const history = useHistory();
+
+    const [isGuest, setIsGuest] = useState(props.isGuest);
     
     useEffect(() => {
-        axios({
-            method: "GET",
-            withCredentials: true,
-            url: "https://cubex-backend.herokuapp.com/user",
-        }).then((res)=>{
-            setCurrentUser(res.data.username);
-            setData(res.data.timeData)
-            console.log(res);
-            console.log("asdf");
-        });
+        if(!isGuest){
+            axios({
+                method: "GET",
+                withCredentials: true,
+                url: "https://cubex-backend.herokuapp.com/user",
+            }).then((res)=>{
+                setCurrentUser(res.data.username);
+                setData(res.data.timeData)
+                console.log(res);
+                console.log("asdf");
+            });
+        }
         
         min2phase.initFull();
         setScram(min2phase.solve(min2phase.randomCube()));
@@ -46,8 +50,7 @@ function Main() {
     // Update Average on data change
     useEffect(() => {
         if(data != undefined){
-            console.log(data.length);
-            if(data.length < 4){
+            if(data.length < 5){
                 setAo5("NA");
             }else{
                 var sum=0;
@@ -80,23 +83,24 @@ function Main() {
         if(event.key === ' '){
             if(isActive){
                 setIsActive(false);
-                setScram(!scram);
-                axios({
-                    method: "POST",
-                    data: {
-                        username: currentUser,
-                        timeData: [
-                            {
-                                "time": time,
-                                "scramble": scram,
-                                "session": "1"
-                            },
-                            ...data
-                        ]
-                    },
-                    withCredentials: true,
-                    url:"https://cubex-backend.herokuapp.com/update"
-                });
+                if(!isGuest){
+                    axios({
+                        method: "POST",
+                        data: {
+                            username: currentUser,
+                            timeData: [
+                                {
+                                    "time": time,
+                                    "scramble": scram,
+                                    "session": "1"
+                                },
+                                ...data
+                            ]
+                        },
+                        withCredentials: true,
+                        url:"https://cubex-backend.herokuapp.com/update"
+                    });
+                }
                 setData([
                     {
                         "time": time,
@@ -158,13 +162,15 @@ function Main() {
     }
 
     const signout = () =>{
-        axios({
-            method: "GET",
-            url:"https://cubex-backend.herokuapp.com/logout"
-        }).then(res => {
-            console.log(res.data);
-        });
-        
+        if(!isGuest){
+            axios({
+                method: "GET",
+                url:"https://cubex-backend.herokuapp.com/logout"
+            }).then(res => {
+                console.log(res.data);
+            });
+        }
+      
         history.push("/login"); 
     };
 

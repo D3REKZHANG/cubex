@@ -15,9 +15,10 @@ function App() {
                     <Redirect to="/login" />
                 )
             }}/>
-            <Route path="/timer" exact component={Main}/>
+            <Route path="/timer" exact render={(props)=>(<Main {...props} isGuest={false}/>)}/>
             <Route path="/login" exact component={Login}/>
             <Route path="/register" exact component={Register}/>
+            <Route path="/guest" exact render={(props)=>(<Main {...props} isGuest={true}/>)}/>
         </Router>
     );
 }

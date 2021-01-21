@@ -45,6 +45,7 @@ function Login(){
                 <label htmlFor="rmbmebox">Remember Me</label><br/>
                 <button type="submit">Go!</button>
                 <Link to='/register' className="registerLink">Create an account</Link>
+                <Link to='/guest' className="registerLink">Continue as guest</Link>
                 <p>{errorText}</p>
             </form>
         </div>

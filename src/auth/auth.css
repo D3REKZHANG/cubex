@@ -82,7 +82,7 @@
 
 .registerLink {
     text-decoration: none;
-    display: inline-block;
+    display: block;
     margin-top:10px;
 }
 
