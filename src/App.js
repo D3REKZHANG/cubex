@@ -1,7 +1,6 @@
 import React from 'react';
 import {Route, BrowserRouter as Router} from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
-
 import Main from "./main-screen/Main";
 import Login from "./auth/Login";
 import Register from "./auth/Register";

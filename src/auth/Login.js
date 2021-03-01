@@ -13,7 +13,8 @@ function Login(){
     const history = useHistory();
 
     const login = (e) => {
-        e.preventDefault();
+        alert("backend is currently under maintenance. Please use \"Continue as Guest\" option");
+        /*e.preventDefault();
         axios({
             method: "POST",
             data: {
@@ -30,7 +31,7 @@ function Login(){
                 setLoginPass("");
                 setErrorText("Username or password is incorrect");
             }
-        });
+        });*/
     };
 
     return (
