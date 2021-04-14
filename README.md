@@ -15,7 +15,7 @@ Frontend is built with <b>React</b>.
 
 I styled the webpage with <b>plain CSS</b> to learn the fundamentals before moving on to libraries like Styled Components or Material UI.
 
-User data is stored on <b>MongoDB Atlas</b>. Don't worry! passwords are <b>hashed</b> before stored!
+User data is stored on <b>MongoDB Atlas</b>. Don't worry, passwords are <b>hashed</b> before stored!
 
 <b>Node.js</b> backend can be found [here](https://github.com/D3REKZHANG/cubex-backend).
 
