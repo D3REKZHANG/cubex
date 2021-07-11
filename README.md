@@ -9,7 +9,7 @@ Visit the site at www.cubextimer.com
 
 Demo appears laggy because it is a gif. 
 
-<b>Node.js</b> backend can be found [here](https://github.com/D3REKZHANG/cubex-backend).
+<b>Express</b> backend can be found [here](https://github.com/D3REKZHANG/cubex-backend).
 
 <h2> Implementation Details </h2>
 
